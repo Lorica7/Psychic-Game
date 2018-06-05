@@ -37,3 +37,5 @@ start ();
 
 console.log(chosenLetter);
 console.log(playerGuess);
+
+// player guess not working, needs fix
