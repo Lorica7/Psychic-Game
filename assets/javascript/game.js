@@ -14,16 +14,17 @@ let lossNum = 0
 let guessRemain = 12;
 
 
+var underscore = ['_', '_', '_'] 
 
 
 
  //Functions
 //**************************************************************************************************************** 
 const start = () => {
- chosenWord = wordOptions[Math.floor(Math.random()= wordOptions.length)];
-wordletters = selectedWord.split('');
+ chosenWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+wordletters = chosenWord.split('');
 blanksNum = wordletters.length;
-}
+
 
 //reset
 
@@ -36,25 +37,50 @@ for (var i = 0; i <blanksNum; i++ ) {
     blanksLetters.push("_");
 }
 
+
 //DOM Manipulation
 document.getElementById("current").innerhtml = blanksLetters.join(' ')
-document.getElementById("guesses-remain").innerHTML = guessRemain;
+document.getElementById("Guesses-remain").innerHTML = guessRemain;
 document.getElementById("wins").innerhtml = winsNum;
 document.getElementById("losses").innerHTML = lossNum;
+};
 
+const checkLetters = letter => {
 
+    let letterExist = false;
+   
+    for (var i; i<blanksNum; i++) {
+        if (chosenWord[i] === letter) {
+            letterExist = true;
+        }
+    }
+    if (letterExist){
+        for (var i; i<blanksNum; i++) {
+            if  (chosenWord[i] === letter) {
+           blanksLetters[i] === letter;
+        }
+    }
+   
+   }
+   else {
+       wrongGuess.push(letter);
+   guessRemain--;
+   }
+   };
  //Main Processes
  //**************************************************************************************************************** 
  start ();
 
- //event handler for the keyclicks
-
- document.onkeyup = (e) => {
-    let playerGuess = string.fromCharCode(event.keyCode).toLowerCase();
-    checkLetters(playerGuess)
- };
 
 
- /* Fat Arrow Syntax Example
- const getUserChoice = userInput => {
-};   */
+document.onkeyup = function(event) {
+    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(letterGuessed);
+    console.log(letterGuessed);
+};
+
+
+console.log(chosenWord);
+console.log(wordletters);
+console.log(blanksNum);
+console.log(blanksLetters);
