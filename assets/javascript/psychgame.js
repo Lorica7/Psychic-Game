@@ -9,7 +9,7 @@ let wrongGuess = [];
 let playerGuess = "";              
 let winsNum = 0;
 let lossNum = 0;
-let guessRemain = 12;
+let guessRemain = 7;
 
 
 
@@ -18,22 +18,38 @@ let guessRemain = 12;
 
 document.getElementById("guesses-remain").innerHTML = guessRemain;
 document.getElementById("wins").innerhtml = winsNum;
-document.getElementById("losses").innerHTML = lossNum;
+document.getElementById("losses").append = lossNum;
 
 
 //Functions
 const start = () => {
     chosenLetter = alphaBet[Math.floor(Math.random()* alphaBet.length)];
+    
+    //reset
+   
+    guessRemain = 7;
 };
-
-document.onkeyup = (e) => {
-    let playerGuess = string.fromCharCode(event.keyCode).toLowerCase();
-};
+function roundComplete () {
+    
+    document.getElementById("guessLeft").innerHTML = guessLeft;
+    document.getElementById("blankSpaces").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("wrongLetters").innerHTML = wrongLetters.join(" ");
+//inside of a function just write winsNum++; or guessRemain--; to update counter
 
 
 // Main process
 
 start ();
+
+document.onkeyup = function(event) {
+    playerGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(playerGuess);
+};
+function checkLetters(letter) {
+    isLetterInWord = false;  
+    
+  
+
 
 console.log(chosenLetter);
 console.log(playerGuess);
