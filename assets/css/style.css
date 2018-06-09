@@ -2,7 +2,8 @@
 
 
 body {
-background-image: url("../images/AlphaBGRD.jpg")
+background-image: url("../images/amulet.jpg");
+font-family: 'Almendra', serif;
 }
 
 .card {
@@ -22,3 +23,17 @@ h6 {
     padding-bottom: 30px;
 }
 
+#neon {
+    width: 40%;
+    height:30%;
+    margin: auto;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+
+/* font choices 
+
+
+    font-family: 'Almendra', serif;
+
+*/

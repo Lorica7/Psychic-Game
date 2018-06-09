@@ -38,7 +38,7 @@ function checkLetters(playerGuess) {
     if (playerGuess === chosenLetter) {
         alert("You Win! Congratulations on being psychic.");
         winsNum ++;
-        document.getElementById("wins").innerhtml = winsNum;
+        document.getElementById("wins").innerhtml = "Wins: " + winsNum;
         finishGame();
     } else if (guessRemain > 0 && playerGuess !== chosenLetter) {
         alert ("Sorry, try again");
@@ -49,7 +49,7 @@ function checkLetters(playerGuess) {
     } else {
         alert("Your psychic abilities are not working. You lose.");
         lossNum ++;
-        document.getElementById("losses").innerText = lossNum;
+        document.getElementById("losses").innerText = "Losses: " + lossNum;
         finishGame();
     }
 }
