@@ -17,13 +17,11 @@ const start = () => {
     chosenLetter = alphaBet[Math.floor(Math.random()* alphaBet.length)];
     
     //reset
-   
     guessRemain = 7;
+    document.getElementById("guesses-remain").innerText = guessRemain;
+    wrongGuess = [];
+    document.getElementById("wrong-guesses").innerText = wrongGuess;
 };
-function finishGame () {
-}  
-//inside of a function just write winsNum++; or guessRemain--; to update counter
-//round complete should empty page parts and also update counter.
 
 // Main process
 
@@ -50,7 +48,7 @@ function checkLetters(playerGuess) {
         alert("Your psychic abilities are not working. You lose.");
         lossNum ++;
         document.getElementById("losses").innerText = "Losses: " + lossNum;
-        finishGame();
+        start ();
     }
 }
 
