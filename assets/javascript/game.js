@@ -28,45 +28,59 @@ blanksNum = wordletters.length;
 
 //reset
 
-guessRemain = 12 
+/*guessRemain = 12 
 wrongGuess = []
-blanksLetters = []
+blanksLetters = [] */
 
 //determine number of blanks needed onscreen
 for (var i = 0; i <blanksNum; i++ ) {
-    blanksLetters.push("_");
+    blanksLetters.push(" _    ");
 }
 
 
 //DOM Manipulation
-document.getElementById("current").innerhtml = blanksLetters.join(' ')
-document.getElementById("Guesses-remain").innerHTML = guessRemain;
-document.getElementById("wins").innerhtml = winsNum;
-document.getElementById("losses").innerHTML = lossNum;
+document.getElementById("blanksLetters").innerText = blanksLetters.join(" ")
+document.getElementById("Guesses-remain").innerText = guessRemain;
+document.getElementById("wins").innerText = "Wins: " + winsNum;
+document.getElementById("losses").innerText = "Losses: " + lossNum;
+document.getElementById("wrong-guesses").innerText = wrongGuess;
 };
 
-const checkLetters = letter => {
+function checkLetters (letter){
 
     let letterExist = false;
    
-    for (var i; i<blanksNum; i++) {
-        if (chosenWord[i] === letter) {
+    for (var i =0; i<blanksNum; i++) {
+        if (chosenWord[i] == letterGuessed) {
             letterExist = true;
         }
     }
     if (letterExist){
-        for (var i; i<blanksNum; i++) {
-            if  (chosenWord[i] === letter) {
-           blanksLetters[i] === letter;
+        for (var i = 0; i<blanksNum; i++) {
+            if  (chosenWord[i] === letterGuessed) {
+           blanksLetters[i] = letterGuessed;
         }
     }
    
    }
    else {
-       wrongGuess.push(letter);
+       wrongGuess.push(letterGuessed);
    guessRemain--;
    }
-   };
+};
+
+const finishRound = () => {
+    console.log("Win Count: " + winsNum + " | Loss Count: " +lossNum + " | Guesses Remaining: " + guessRemain);
+
+    //check for a win
+    if (letterExist.toString() == blanksLetters.toString()) {
+        winsNum ++;
+        alert("Great Job! You win.");
+        document.getElementById("wins").innerText = wins;
+    }
+}
+
+
  //Main Processes
  //**************************************************************************************************************** 
  start ();
@@ -74,7 +88,7 @@ const checkLetters = letter => {
 
 
 document.onkeyup = function(event) {
-    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+     letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
     checkLetters(letterGuessed);
     console.log(letterGuessed);
 };
@@ -84,3 +98,8 @@ console.log(chosenWord);
 console.log(wordletters);
 console.log(blanksNum);
 console.log(blanksLetters);
+document.getElementById("blanksLetters").innerTe
+
+
+//In homework video, teacher uses spans in the html doc. The spans
+//have the ID that gets updated
